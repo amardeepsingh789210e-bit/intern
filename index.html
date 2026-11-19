@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking System – Advanced Data Structures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Banking System</h1>
+    <p>Manage customers, accounts and transactions. Every action runs on the data structures from the project report: hash maps, a queue, a vector and a graph.</p>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="grid">
+    <div class="stack">
+      <section class="card">
+        <h2>Add a customer</h2>
+        <label for="cName">Full name</label>
+        <input id="cName" placeholder="e.g. Riya Sharma" autocomplete="off">
+        <button id="addCustomer">Add customer</button>
+      </section>
+
+      <section class="card">
+        <h2>Open an account</h2>
+        <label for="aCustomer">Customer</label>
+        <select id="aCustomer"></select>
+        <label for="aInitial">Initial deposit (₹)</label>
+        <input id="aInitial" type="number" min="0" step="0.01" value="1000">
+        <button id="addAccount">Open account</button>
+      </section>
+
+      <section class="card">
+        <h2>New transaction</h2>
+        <label for="tType">Type</label>
+        <select id="tType">
+          <option value="deposit">Deposit</option>
+          <option value="withdraw">Withdraw</option>
+          <option value="transfer">Transfer</option>
+        </select>
+        <label for="tAccount" id="tAccountLabel">Account</label>
+        <select id="tAccount"></select>
+        <div id="toWrap" class="hidden">
+          <label for="tTo">To account</label>
+          <select id="tTo"></select>
+        </div>
+        <label for="tAmount">Amount (₹)</label>
+        <input id="tAmount" type="number" min="0" step="0.01" placeholder="500">
+        <label class="check"><input type="checkbox" id="auto" checked> Process automatically</label>
+        <div class="row">
+          <button id="submitTx">Submit</button>
+          <button id="procOne" class="ghost">Process next</button>
+          <button id="procAll" class="ghost">Process all</button>
+        </div>
+      </section>
+
+      <button id="reset" class="danger">Reset demo data</button>
+    </div>
+
+    <div class="stack">
+      <section class="card">
+        <h2>Accounts</h2>
+        <div id="accounts" class="accounts"></div>
+      </section>
+
+      <section class="card">
+        <div class="tabs" role="tablist">
+          <button role="tab" data-tab="history">Transaction history</button>
+          <button role="tab" data-tab="queue">Queue</button>
+          <button role="tab" data-tab="graph">Customer → accounts</button>
+          <button role="tab" data-tab="ds">Data structures</button>
+          <button role="tab" data-tab="tests">Test cases</button>
+        </div>
+        <div id="panel"></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/ds.js"></script>
+<script src="js/bank.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
