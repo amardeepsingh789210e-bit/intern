@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banking System – Advanced Data Structures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="var(--brand)"/><path d="M20 9 8 15v2h24v-2L20 9Zm-9 10v9h3v-9h-3Zm5.5 0v9h3v-9h-3Zm5.5 0v9h3v-9h-3Zm5.5 0v9h3v-9h-3ZM9 30v3h22v-3H9Z" fill="var(--brand-ink)"/></svg>
+      <div><h1>Banking System</h1><p>Hash maps · Queue · Vector · Graph</p></div>
+    </div>
+    <button id="reset" class="ghost small">Reset demo data</button>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="grid">
+    <div class="stack">
+      <section class="card">
+        <div class="seg" id="modeSeg" role="tablist" aria-label="Choose an action">
+          <button data-mode="tx" role="tab">Transaction</button>
+          <button data-mode="acct" role="tab">Account</button>
+          <button data-mode="cust" role="tab">Customer</button>
+        </div>
+
+        <div id="mode-tx">
+          <div class="seg seg-sm" id="typeSeg" role="tablist" aria-label="Transaction type">
+            <button data-type="deposit" role="tab">Deposit</button>
+            <button data-type="withdraw" role="tab">Withdraw</button>
+            <button data-type="transfer" role="tab">Transfer</button>
+          </div>
+          <label for="tAccount" id="tAccountLabel">Account</label>
+          <select id="tAccount"></select>
+          <div id="toWrap" class="hidden">
+            <label for="tTo">To account</label>
+            <select id="tTo"></select>
+          </div>
+          <label for="tAmount">Amount (₹)</label>
+          <input id="tAmount" type="number" min="0" step="0.01" placeholder="0.00" inputmode="decimal">
+          <div class="chips" id="chips"><button data-chip="100" class="ghost small">+100</button><button data-chip="500" class="ghost small">+500</button><button data-chip="1000" class="ghost small">+1,000</button><button data-chip="5000" class="ghost small">+5,000</button></div>
+          <div id="tPreview" class="preview" aria-live="polite"></div>
+          <label class="check"><input type="checkbox" id="queueOnly"> Only add to the queue (process later)</label>
+          <button id="submitTx" class="wide">Deposit</button>
+        </div>
+
+        <div id="mode-acct" class="hidden">
+          <label for="aCustomer">Customer</label>
+          <select id="aCustomer"></select>
+          <label for="aInitial">Initial deposit (₹)</label>
+          <input id="aInitial" type="number" min="0" step="0.01" value="1000" inputmode="decimal">
+          <button id="addAccount" class="wide">Open account</button>
+        </div>
+
+        <div id="mode-cust" class="hidden">
+          <label for="cName">Full name</label>
+          <input id="cName" placeholder="e.g. Riya Sharma" autocomplete="off">
+          <button id="addCustomer" class="wide">Add customer</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="stack">
+      <section class="card">
+        <h2>Accounts <span class="hint">Click an account to select it</span></h2>
+        <div id="accounts" class="accounts"></div>
+      </section>
+
+      <section class="card">
+        <div class="tabs" role="tablist">
+          <button role="tab" data-tab="history">History</button>
+          <button role="tab" data-tab="queue">Queue</button>
+          <button role="tab" data-tab="graph">Customer → accounts</button>
+          <button role="tab" data-tab="console">Console menu</button>
+          <button role="tab" data-tab="ds">Data structures</button>
+          <button role="tab" data-tab="tests">Test cases</button>
+          <button role="tab" data-tab="report">Project report</button>
+        </div>
+        <div id="panel"></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/ds.js"></script>
+<script src="js/bank.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
